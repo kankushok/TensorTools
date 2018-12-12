@@ -1,8 +1,10 @@
 function[nshells] = optimize_shells(shells,iter)
 
 %this program generates rotates b-shells to maximize angular resolution by
-%modeling by modeling electrostatic repulsion.  The inputs are the
-%number of
+%modeling by modeling electrostatic repulsion.  The inputs are a cell
+%containing the Nx3 matrix describing the directions in that shell. Iter is
+%number of iterations to run
+%
 tic
 
 num_shells = length(shells); 
