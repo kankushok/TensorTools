@@ -4,7 +4,6 @@ function[allpts] = uniform_sphere(num_points,iter)
 %unit sphere by modeling electrostatic repulsion.  The inputs are the
 %number of
 tic
-%num_points = 400;
 
 %plot progress
 display = 0;
@@ -49,12 +48,14 @@ for ii = 1:iter
     
     % renormalize allpts
     allpts = allpts./repmat(sqrt(sum(allpts.^2,2)),1,3);
-%     hold off
-%     scatter3(allpts(:,1),allpts(:,2),allpts(:,3),'r')
-%     axis('equal')
-%     hold on
-%     quiver3(allpts(:,1),allpts(:,2),allpts(:,3),netF(:,1),netF(:,2),netF(:,3),0);
-%     axis([-1 1 -1 1 -1 1])
-%     pause
+    if(display==1)
+        hold off
+        scatter3(allpts(:,1),allpts(:,2),allpts(:,3),'r')
+        axis('equal')
+        hold on
+        quiver3(allpts(:,1),allpts(:,2),allpts(:,3),netF(:,1),netF(:,2),netF(:,3),0);
+        axis([-1 1 -1 1 -1 1])
+        pause
+    end
 end
 toc

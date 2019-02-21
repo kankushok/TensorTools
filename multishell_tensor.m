@@ -13,9 +13,11 @@ Ndiff = sum(numdirs);
 for ii = 1:Nshells
     shells{ii} = uniform_half_sphere(numdirs(ii),200);
 end
-
-nshells = optimize_shells(shells,400);
-
+if(Nshells > 1)
+    nshells = optimize_shells(shells,400);
+else
+    nshells = shells;
+end
 tensor = [];
 for ii = 1:Nshells
     tensor = [tensor; nshells{ii}*sqrt(bvals(ii)/max(bvals))]; 
